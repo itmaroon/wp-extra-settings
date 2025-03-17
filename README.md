@@ -1,4 +1,4 @@
-# WP EXTRA SETTING
+# WP EXTRA SETTINGS
 
 ## 概要
 
