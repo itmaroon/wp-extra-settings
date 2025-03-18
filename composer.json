@@ -1,0 +1,5 @@
+{
+    "require": {
+        "itmar/wpsetting-class-package": "^1.0"
+    }
+}
