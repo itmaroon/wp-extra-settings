@@ -1,0 +1,454 @@
+// Extra Settings Plugin Admin Styles
+// -----------------------------------
+
+// Variables
+$primary-color: #2271b1; // WordPressの青
+$primary-hover: #135e96;
+$border-color: #dcdcde;
+$light-bg: #f0f0f1;
+$text-color: #3c434a;
+$success-color: #00a32a;
+$error-color: #d63638;
+$box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+$transition: all 0.2s ease-in-out;
+$content-bg: #fff; // コンテンツの背景色
+$form-bg: #f6f7f7; // form-tableの背景色
+$border-radius: 10px; // 角丸の半径
+
+// Main wrapper
+.wrap {
+  margin: 10px 20px 0 2px;
+  
+  h1 {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid $border-color;
+    font-size: 23px;
+    font-weight: 400;
+  }
+}
+
+// Tabs Navigation
+.itmar-settings-tabs {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0; // タブとコンテンツの間の隙間をなくす
+  border-bottom: 1px solid $border-color;
+  
+  &__nav {
+    display: flex;
+    
+    &-button {
+      padding: 10px 15px;
+      margin-right: 5px;
+      border: 1px solid $border-color;
+      border-bottom: none;
+      background-color: #f6f7f7;
+      color: $text-color;
+      cursor: pointer;
+      font-size: 14px;
+      transition: $transition;
+      border-radius: 4px 4px 0 0;
+      position: relative;
+      bottom: -1px;
+      
+      &:hover {
+        background-color: $content-bg;
+      }
+      
+      &.active {
+        background-color: $content-bg; // タブとコンテンツの背景色を合わせる
+        border-bottom: 1px solid $content-bg;
+        font-weight: 500;
+        
+        &:after {
+          content: '';
+          position: absolute;
+          height: 3px;
+          left: 0;
+          right: 0;
+          top: -1px;
+          background: $primary-color;
+          border-radius: 3px 3px 0 0;
+        }
+        
+        // タブ選択後のアニメーション
+        &:focus {
+          outline: 1px solid $primary-color;
+          animation: fadeOutBorder 1s forwards;
+        }
+      }
+    }
+  }
+  
+  &__submit {
+    padding: 0 10px;
+    
+    .button-primary {
+      min-width: 130px;
+    }
+  }
+}
+
+// Content sections
+.itmar-settings-content {
+  position: relative;
+  background: $content-bg; // コンテンツの背景色を変数で指定
+  padding: 20px;
+  border: 1px solid $border-color;
+  border-top: none; // 上のボーダーを削除してタブとの連続性を出す
+  border-radius: 0 0 4px 4px; // 上部の角丸を削除
+  box-shadow: $box-shadow;
+  
+  &__section {
+    display: none;
+    
+    &.active {
+      display: block;
+      animation: fadeIn 0.3s ease-in-out;
+    }
+    
+    h2 {
+      font-size: 18px;
+      padding: 10px 0;
+      margin: 0 0 15px 0;
+      border-bottom: 1px solid $border-color;
+    }
+  }
+  
+  // Form table styles
+  .form-table {
+    position: relative;
+    margin-bottom: 30px;
+    margin-left: 10px;
+    background-color: $form-bg; // 背景色を元に戻す
+    padding: 15px;
+    border-radius: $border-radius; // 背景色の角丸
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    
+    // 境界線のみを持つ疑似要素
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border: 1px solid $border-color;
+      border-radius: $border-radius;
+      pointer-events: none; // クリックイベントを通過させる
+      z-index: 1;
+    }
+    
+    // tbodyに左余白を追加
+    tbody {
+      display: block;
+      padding-left: 10px; // 左の余白を追加
+    }
+    
+    tr {
+      display: flex;
+      flex-wrap: wrap;
+    }
+    
+    th {
+      font-weight: 500;
+      width: 230px;
+      padding: 15px 10px 15px 0;
+      vertical-align: top;
+    }
+    
+    td {
+      padding: 15px 10px;
+      vertical-align: top;
+      flex: 1;
+      min-width: 300px;
+      
+      .description {
+        color: #666;
+        font-style: italic;
+        margin: 5px 0 0;
+        font-size: 13px;
+      }
+      
+      label {
+        margin-bottom: 5px;
+        display: inline-block;
+      }
+      
+      // Checkboxes container
+      & > label {
+        display: block;
+        margin-bottom: 8px;
+        
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+      
+      // Post Supports 2列レイアウト
+      .post-supports-checkboxes {
+        display: flex;
+        flex-wrap: wrap;
+        
+        label {
+          width: 50%;
+          padding-right: 10px;
+          box-sizing: border-box;
+        }
+      }
+      
+      input[type="text"], 
+      input[type="url"],
+      textarea, 
+      select {
+        border: 1px solid $border-color;
+        border-radius: 4px;
+        box-shadow: inset 0 1px 2px rgba(0,0,0,0.07);
+        background-color: #fff;
+        
+        &:focus {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 1px $primary-color;
+          outline: 2px solid transparent;
+        }
+      }
+      
+      textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+      
+      // Custom image selector preview
+      #itmar_ogp_default_image_preview {
+        img {
+          border: 1px solid $border-color;
+          border-radius: 3px;
+          padding: 3px;
+          background: #fff;
+        }
+      }
+    }
+  }
+  
+  // SEO Help content
+  #itmar_seo_help_content {
+    background: #f9f9f9;
+    border: 1px solid $border-color;
+    border-radius: $border-radius;
+    padding: 15px;
+    
+    pre {
+      background: #fff;
+      padding: 10px;
+      border: 1px solid #eee;
+      border-radius: 3px;
+      overflow: auto;
+    }
+  }
+}
+
+// Bottom submit button
+.submit {
+  padding: 15px 0 0 0;
+  margin-top: 20px;
+  border-top: 1px solid $border-color;
+  
+  .button-primary {
+    min-width: 150px;
+    text-align: center;
+  }
+}
+
+// レスポンシブ時のフッター固定ボタン
+@media screen and (max-width: 782px) {
+  .submit {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 10px;
+    margin: 0;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    z-index: 100;
+    
+    .button-primary {
+      margin: 0 auto;
+    }
+  }
+  
+  // フッター固定ボタンのための下部余白
+  .itmar-settings-content {
+    padding-bottom: 60px;
+  }
+}
+
+// Helper classes and animations
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeOutBorder {
+  0% { outline-color: rgba($primary-color, 1); }
+  100% { outline-color: rgba($primary-color, 0); }
+}
+
+// チェックボックスのスタイル修正
+input[type="checkbox"] {
+  position: relative;
+  border: 1px solid #8c8f94;
+  background: #fff;
+  clear: none;
+  cursor: pointer;
+  
+  &:checked {
+    background-color: $primary-color;
+    border-color: $primary-color;
+    
+    &::before {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 2px;
+      left: 8px; // 位置を中央に調整（8pxに変更）
+      width: 5px;
+      height: 10px;
+      border: solid #fff;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+  }
+  
+  // レスポンシブ時のサイズ調整
+  @media screen and (max-width: 782px) {
+    width: 16px !important;
+    height: 16px !important;
+    
+    &:checked::before {
+      width: 4px;
+      height: 8px;
+      margin: 0;
+      top: 2px;
+      left: 5px;
+    }
+  }
+}
+
+// スクリプトによるPost Supports 2列レイアウトの適用
+// JavaScriptで追加するクラスの定義
+.post-supports-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -5px;
+  
+  > label {
+    width: 50%;
+    padding: 0 5px;
+    box-sizing: border-box;
+    margin-bottom: 5px;
+  }
+}
+
+// Media queries for responsive design
+@media screen and (max-width: 782px) {
+  .itmar-settings-tabs {
+    flex-direction: column;
+    align-items: flex-start;
+    
+    &__nav {
+      margin-bottom: 0; // タブとコンテンツの間の隙間をなくす
+      width: 100%;
+      overflow-x: auto;
+      white-space: nowrap;
+      
+      &-button {
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+    
+    &__submit {
+      display: none; // 上部の保存ボタンを非表示（下部のものを使用）
+    }
+  }
+  
+  .itmar-settings-content {
+    .form-table {
+      margin-left: 0; // モバイルでは左余白を削除
+      padding: 10px;
+      
+      tbody {
+        padding-left: 5px; // モバイルでは左余白を小さく
+      }
+      
+      tr {
+        display: block;
+      }
+      
+      th {
+        width: 100%;
+        padding: 10px 0 5px;
+        display: block;
+      }
+      
+      td {
+        padding: 0 0 15px;
+        display: block;
+        min-width: auto;
+        
+        input[type="text"], 
+        textarea, 
+        select {
+          width: 100%;
+        }
+        
+        // モバイルでのPost Supports 2列レイアウト調整
+        .post-supports-wrapper {
+          > label {
+            width: 100%; // モバイルでは1列に
+          }
+        }
+      }
+    }
+  }
+}
+
+// Custom tooltips for help information
+.tooltip-icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: $primary-color;
+  color: white;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 16px;
+  font-size: 12px;
+  cursor: help;
+  margin-left: 5px;
+  
+  &:hover {
+    background: $primary-hover;
+  }
+}
+
+// Focus visibility improvements for accessibility
+:focus {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+// Mobile styling enhancements
+@media screen and (max-width: 600px) {
+  .wrap h1 {
+    font-size: 20px;
+  }
+  
+  .itmar-settings-content {
+    padding: 15px 10px;
+  }
+}
