@@ -1,0 +1,64 @@
+# Copyright (C) 2025 Web Creator ITmaroon
+# This file is distributed under the GPL v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: WP EXTRA SETTINGS 0.1.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/wp-extra-settings\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2025-03-26T05:21:52+01:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.11.0\n"
+"X-Domain: wp-extra-settings\n"
+
+#. Plugin Name of the plugin
+#: wp-extra-settings.php
+msgid "WP EXTRA SETTINGS"
+msgstr ""
+
+#. Description of the plugin
+#: wp-extra-settings.php
+msgid "It provides a function that allows you to configure settings that are not provided in the WordPress admin screen using a GUI."
+msgstr ""
+
+#. Author of the plugin
+#: wp-extra-settings.php
+msgid "Web Creator ITmaroon"
+msgstr ""
+
+#. Author URI of the plugin
+#: wp-extra-settings.php
+msgid "https://itmaroon.net"
+msgstr ""
+
+#: wp-extra-settings.php:23
+msgid "Posts"
+msgstr ""
+
+#: wp-extra-settings.php:72
+msgid "Unauthorized user"
+msgstr ""
+
+#: wp-extra-settings.php:104
+msgid "Your settings saved"
+msgstr ""
+
+#: wp-extra-settings.php:115
+msgid "General"
+msgstr ""
+
+#: wp-extra-settings.php:116
+msgid "SEO"
+msgstr ""
+
+#: wp-extra-settings.php:117
+msgid "Security"
+msgstr ""
+
+#: wp-extra-settings.php:120
+#: wp-extra-settings.php:147
+msgid "Save Settings"
+msgstr ""
