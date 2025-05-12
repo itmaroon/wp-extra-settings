@@ -15,7 +15,7 @@ Domain Path:  /languages
 
 if (! defined('ABSPATH')) exit;
 
-require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/vendor/itmar/loader-package/src/register_autoloader.php';
 
 // プラグイン有効化時の処理
 register_activation_hook(__FILE__, function () {
@@ -157,16 +157,16 @@ add_action('plugins_loaded', 'itmar_extrasetting_initialize');
 function itmar_extrasetting_initialize()
 {
     //リダイレクト設定
-    \Itmar\WpSettingClassPackage\ItmarRedirectControl::get_instance();
+    \Itmar\WpsettingClassPackage\ItmarRedirectControl::get_instance();
 
     // 投稿タイプ設定
-    \Itmar\WpSettingClassPackage\ItmarModifyPost::get_instance();
+    \Itmar\WpsettingClassPackage\ItmarModifyPost::get_instance();
 
     //リビジョン設定
-    \Itmar\WpSettingClassPackage\ItmarRevisionClass::get_instance();
+    \Itmar\WpsettingClassPackage\ItmarRevisionClass::get_instance();
 
     //セキュリティ設定
-    \Itmar\WpSettingClassPackage\ItmarSecuritySettings::get_instance();
+    \Itmar\WpsettingClassPackage\ItmarSecuritySettings::get_instance();
     //SEO関連設定
-    \Itmar\WpSettingClassPackage\ItmarSEOSettings::get_instance();
+    \Itmar\WpsettingClassPackage\ItmarSEOSettings::get_instance();
 }
