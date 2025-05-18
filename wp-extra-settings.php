@@ -2,7 +2,7 @@
 /*
 Plugin Name:  WP EXTRA SETTINGS
 Description:  It provides a function that allows you to configure settings that are not provided in the WordPress admin screen using a GUI.
-Requires at least: 6.3
+Requires at least: 6.4
 Requires PHP:      8.2
 Version:      0.1.0
 Author:       Web Creator ITmaroon
@@ -69,7 +69,7 @@ add_action('admin_post_itmar_save_settings', 'itmar_handle_save_settings');
 function itmar_handle_save_settings()
 {
     if (!current_user_can('manage_options')) {
-        wp_die(__('Unauthorized user', 'wp-extra-settings'));
+        wp_die(esc_html__('Unauthorized user', 'wp-extra-settings'));
     }
     check_admin_referer('itmar_setting_nonce');
 
@@ -101,7 +101,7 @@ function itmar_extrasetting_settings_page()
         <!-- Notice 表示 -->
         <?php if (isset($_GET['settings-updated']) && $_GET['settings-updated'] === 'true') : ?>
             <div class="notice notice-success is-dismissible">
-                <p><?php _e('Your settings saved', 'wp-extra-settings'); ?></p>
+                <p><?php esc_html__('Your settings saved', 'wp-extra-settings'); ?></p>
             </div>
         <?php endif; ?>
 
@@ -112,9 +112,9 @@ function itmar_extrasetting_settings_page()
             <!-- タブナビ -->
             <div class="itmar-settings-tabs">
                 <div class="itmar-settings-tabs__nav">
-                    <button type="button" class="itmar-settings-tabs__nav-button active" data-tab="tab-general"><?php echo __("General", "wp-extra-settings") ?></button>
-                    <button type="button" class="itmar-settings-tabs__nav-button" data-tab="tab-seo"><?php echo __("SEO", "wp-extra-settings") ?></button>
-                    <button type="button" class="itmar-settings-tabs__nav-button" data-tab="tab-security"><?php echo __("Security", "wp-extra-settings") ?></button>
+                    <button type="button" class="itmar-settings-tabs__nav-button active" data-tab="tab-general"><?php echo esc_html__("General", "wp-extra-settings") ?></button>
+                    <button type="button" class="itmar-settings-tabs__nav-button" data-tab="tab-seo"><?php echo esc_html__("SEO", "wp-extra-settings") ?></button>
+                    <button type="button" class="itmar-settings-tabs__nav-button" data-tab="tab-security"><?php echo esc_html__("Security", "wp-extra-settings") ?></button>
                 </div>
                 <div class="itmar-settings-tabs__submit">
                     <?php submit_button(__("Save Settings", "wp-extra-settings"), 'primary', 'submit', false); ?>
